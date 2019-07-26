@@ -1,4 +1,9 @@
 # rest-example-go
+JSON for Postman
+    
+    {"first_name":"Josh","last_name":"Green","email":"qwe@qwe.ru","password":"a"}
+
+
 Dump database
 
     DROP TABLE IF EXISTS "users";
