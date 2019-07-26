@@ -31,8 +31,8 @@ func User2UserDTO(u *entity.User) *UserDTO {
 	}
 }
 
-// Extract conversion
-func Extract(u *UserDTO) *entity.User {
+// ExtractUserFromDTO conversion
+func ExtractUserFromDTO(u *UserDTO) *entity.User {
 	//i := sql.NullInt64{Int64: 42, Valid: true}
 	return &entity.User{
 		ID:        u.ID.Int64,
@@ -77,7 +77,7 @@ func (r *UserRepository) FindAll() ([]*entity.User, error) {
 
 	var rez []*entity.User
 	for _, v := range users {
-		rez = append(rez, Extract(v))
+		rez = append(rez, ExtractUserFromDTO(v))
 	}
 
 	return rez, nil
@@ -94,8 +94,7 @@ func (r *UserRepository) FindOneByID(id int64) (*entity.User, error) {
 		return nil, err
 	}
 
-	//log.Println(user)
-	return Extract(&user), nil
+	return ExtractUserFromDTO(&user), nil
 }
 
 // Add func add a new user.
